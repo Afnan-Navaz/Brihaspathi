@@ -65,7 +65,6 @@ const Home = () => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
     getEvents().then(res => {
-      console.log(res);
       setEvents(res.results)});
   }, []);
   return (
