@@ -1,26 +1,22 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { rootUrl1 } from '../../../config/api';
+import {req} from '../../../config/http';
 
 import UserProfile from './UserProfile/UserProfile.component';
 
 import './TopNav.style.scss';
 
-
-
-
-
-
-
 const TopNav = () => {
   const [name, setName] = useState();
+
+
   useEffect(() => {
     if(localStorage.getItem('excelId')){
-      fetch(`${rootUrl1}/api/excel_id?excel_id=${localStorage.getItem('excelId')}`)
-    .then(res => res.json())
-    .then(data => {
-      setName(data[0].name);
-    });
+      req(`${rootUrl1}/api/excel_id?excel_id=${localStorage.getItem('excelId')}`)
+        .then(data => {
+          setName(data[0].name);
+          });
     }
   }, []);
   return (

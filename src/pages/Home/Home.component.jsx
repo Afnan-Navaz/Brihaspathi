@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getEvents } from '../../config/api';
+import { req } from '../../config/http';
 import withLogin from '../../HOC/withLogin';
 import {rootUrl1} from '../../config/api';
 import './Home.style.scss';
@@ -27,8 +28,7 @@ const Event = (props) => {
   }
 
   const clickHand = () => {
-    fetch(`${rootUrl1}/api/events/${id}`)
-    .then(res => res.json())
+    req(`${rootUrl1}/api/events/${id}`)
     .then(data => {
       if(window.localStorage.getItem(id) === null){
         window.localStorage.setItem(id, JSON.stringify({
@@ -64,8 +64,10 @@ const Event = (props) => {
 const Home = () => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
-    getEvents().then(res => {
-      setEvents(res.results)});
+    setTimeout(()=>{
+      getEvents().then(res => {
+        setEvents(res.results)});
+    }, 1000);
   }, []);
   return (
     <div className="home">

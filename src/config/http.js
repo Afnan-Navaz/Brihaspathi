@@ -14,7 +14,6 @@ export const get1 = url => {
     mode: 'cors',
   })
     .then(res => {
-      console.log(res);
       return res.json();
     })
     .catch(err => console.log(err));
@@ -26,7 +25,6 @@ export const post2 = (url, data) => {
     body: data,
   })
     .then(res => {
-      console.log(res);
       return res;
     })
     .catch(err => err);
@@ -37,8 +35,13 @@ export const get2 = url => {
     mode: 'cors',
   })
     .then(res => {
-      console.log(res);
       return res.json();
     })
     .catch(err => console.log(err));
 };
+
+export const req = async (url) => {
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+}

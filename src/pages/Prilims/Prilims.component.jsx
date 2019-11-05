@@ -6,16 +6,15 @@ import Timer from '../../components/timer/timer.component';
 import { rootUrl1 } from '../../config/api';
 
 const Prilims = props => {
-  const clickHand = () => {
+  const clickHand = async () => {
     props.history.push('/');
-    fetch(`${rootUrl1}/api/events/${props.match.params.event}/participants`, {
+    await fetch(`${rootUrl1}/api/events/${props.match.params.event}/participants`, {
       method: 'PATCH',
       headers: { "Content-Type": "application/json; charset=utf-8" },
       body: JSON.stringify({
         "is_prelims_completed": true,
         "excel_id" : localStorage.getItem('excelId')
       })
-
   });
 }
   useEffect(()=>{
