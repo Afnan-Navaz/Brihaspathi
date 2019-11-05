@@ -41,6 +41,7 @@ const Question = ({ match }) => {
   return (
     <div className="qBox shadow p-3 mb-5 bg-white rounded question">
       <div className="qHead">{question.question}</div>
+      {(question.url === "") ? <React.Fragment></React.Fragment> : <img className="quImg" src={question.url} alt="?" />}
       <div>
         <div className="row qrow">
           {options.map((op, i) => (

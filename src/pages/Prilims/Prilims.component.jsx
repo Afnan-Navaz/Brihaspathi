@@ -17,7 +17,7 @@ const Prilims = props => {
       })
   });
 }
-  useEffect(()=>{
+ useEffect(()=>{
     window.addEventListener('blur', ()=>{
       clickHand();
     });
