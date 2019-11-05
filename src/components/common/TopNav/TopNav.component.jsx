@@ -55,7 +55,6 @@ const TopNav = () => {
         <span
         className="navbar-brand link-item"
         data-toggle="modal"
-        data-target="#userProfile"
       >
         <i className="fa fa-user-circle"></i> {name}
       </span>):(

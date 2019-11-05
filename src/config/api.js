@@ -1,22 +1,22 @@
 import { get1, get2, post2 } from './http';
 
-export const getEvents = () => {
-  const excelId = localStorage.getItem('excelId');
+export const getEvents = async () => {
+  const excelId = await localStorage.getItem('excelId');
   return get1(`/excel_id/events?excel_id=${excelId}`);
 };
 
-export const getQuestion = questionId => {
-  const excelId = localStorage.getItem('excelId');
+export const getQuestion = async (questionId) => {
+  const excelId = await localStorage.getItem('excelId');
   return get2(`/get-question/${questionId}/${excelId}`);
 };
 
-export const getQuestionIds = eventId => {
-  const excelId = localStorage.getItem('excelId');
+export const getQuestionIds = async (eventId) => {
+  const excelId = await localStorage.getItem('excelId');
   return get2(`/get-question-list/${eventId}/${excelId}`);
 };
 
-export const setAnswer = (question, answer, event) => {
-  const body = {
+export const setAnswer = async (question, answer, event) => {
+  const body = await {
     user_id: localStorage.getItem('excelId'),
     question_id: question,
     answer: answer,
