@@ -4,6 +4,7 @@ import './Login.style.scss';
 
 const Login = ({ history }) => {
   const [excelId, setExcelId] = useState('');
+  const [pin, setPin] = useState('');
   return (
     <div className="wrapper fadeInDown login">
       <div id="formContent">
@@ -16,7 +17,7 @@ const Login = ({ history }) => {
         <form
           onSubmit={e => {
             e.preventDefault();
-            login(excelId, history);
+            login(excelId, pin);
           }}
         >
           <input
@@ -27,6 +28,15 @@ const Login = ({ history }) => {
             value={excelId}
             onChange={e => setExcelId(e.target.value)}
             placeholder="Excel ID"
+          />
+          <input
+            type="text"
+            id="pin"
+            className="fadeIn second"
+            name="pin"
+            value={pin}
+            onChange={e => setPin(e.target.value)}
+            placeholder="Enter Pin"
           />
           <input type="submit" className="fadeIn fourth" value="Log In" />
         </form>
